@@ -700,6 +700,41 @@
                 font-size: 2rem;
             }
         }
+
+        /* Figure captions and lightbox modal */
+        .figure-caption {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin-top: 0.5rem;
+        }
+
+        .lightbox img { cursor: zoom-in; border-radius: 6px; }
+
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0,0,0,0.8);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            padding: 2rem;
+        }
+
+        .modal.open { display: flex; }
+
+        .modal img { max-width: 100%; max-height: 80vh; border-radius: 6px; box-shadow: 0 8px 30px rgba(0,0,0,0.6); }
+
+        .modal .caption { color: #fff; margin-top: 0.6rem; text-align: center; font-size: 1rem; }
+
+        .modal-close { position: absolute; top: 1rem; right: 1rem; color: #fff; font-size: 1.8rem; cursor: pointer; }
+
+        @media (max-width: 480px) {
+            .modal { padding: 1rem; }
+        }
     </style>
 </head>
 <body>
@@ -785,7 +820,10 @@
             <div class="projects-grid">
                 <article class="project-card" aria-labelledby="proj1-title">
                     <div class="project-media">
-                        <img src="assets/images/optimal-diagram.png" alt="Diagram: Optimal planning of hybrid fuel cell-battery system" loading="lazy">
+                        <a href="assets/images/optimal-diagram.svg" class="lightbox" data-caption="Optimal planning of hybrid fuel cell-battery system">
+                            <img src="assets/images/optimal-diagram.svg" alt="Diagram: Optimal planning of hybrid fuel cell-battery system" loading="lazy">
+                        </a>
+                        <div class="figure-caption">Optimal planning of hybrid fuel cell-battery system</div>
                     </div>
                     <div class="project-body">
                         <h4 id="proj1-title">Optimal Planning of Hybrid Fuel Cell-Battery System</h4>
@@ -800,7 +838,10 @@
 
                 <article class="project-card" aria-labelledby="proj2-title">
                     <div class="project-media">
-                        <img src="assets/images/sizing-diagram.png" alt="Diagram: Sizing hybrid battery-fuel cell system in zero-emission microgrid" loading="lazy">
+                        <a href="assets/images/sizing-diagram.svg" class="lightbox" data-caption="Sizing hybrid battery–fuel cell system in zero-emission microgrid">
+                            <img src="assets/images/sizing-diagram.svg" alt="Diagram: Sizing hybrid battery-fuel cell system in zero-emission microgrid" loading="lazy">
+                        </a>
+                        <div class="figure-caption">Sizing hybrid battery–fuel cell system in zero-emission microgrid</div>
                     </div>
                     <div class="project-body">
                         <h4 id="proj2-title">Zero-Emission Microgrid with Hydrogen Integration</h4>
@@ -1172,3 +1213,48 @@
         <section id="contact">
             <h2 class="section-title">Get in Touch</h2>
             <p class="section-subtitle">Let's collaborate on achieving 100% renewable energy systems (U.S. National Goal)</p>
+
+            <!-- Modal for lightbox -->
+            <div id="lightbox-modal" class="modal" aria-hidden="true" role="dialog" aria-label="Image preview">
+                <div class="modal-close" id="modal-close" aria-hidden="false">✕</div>
+                <div>
+                    <img id="modal-image" src="" alt="" />
+                    <div class="caption" id="modal-caption"></div>
+                </div>
+            </div>
+
+            <script>
+            // Lightweight lightbox
+            document.addEventListener('click', function (e) {
+                var link = e.target.closest('.lightbox');
+                if (link) {
+                    e.preventDefault();
+                    var src = link.getAttribute('href');
+                    var caption = link.dataset.caption || '';
+                    var modal = document.getElementById('lightbox-modal');
+                    var img = document.getElementById('modal-image');
+                    var cap = document.getElementById('modal-caption');
+                    img.src = src;
+                    img.alt = caption;
+                    cap.textContent = caption;
+                    modal.classList.add('open');
+                    modal.setAttribute('aria-hidden', 'false');
+                }
+            });
+
+            document.getElementById('modal-close').addEventListener('click', function (){
+                var modal = document.getElementById('lightbox-modal');
+                modal.classList.remove('open');
+                modal.setAttribute('aria-hidden', 'true');
+                document.getElementById('modal-image').src = '';
+            });
+
+            // Close on backdrop click
+            document.getElementById('lightbox-modal').addEventListener('click', function(e){
+                if (e.target === this) {
+                    this.classList.remove('open');
+                    this.setAttribute('aria-hidden', 'true');
+                    document.getElementById('modal-image').src = '';
+                }
+            });
+            </script>
