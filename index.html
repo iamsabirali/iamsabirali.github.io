@@ -82,7 +82,9 @@
             border-radius: 50%;
             border: 5px solid rgba(255,255,255,0.9);
             margin: 0 auto 2rem;
-            object-fit: cover;
+            object-fit: contain;
+            background: var(--white);
+            padding: 6px;
             box-shadow: 0 18px 40px var(--card-shadow);
             animation: float 3s ease-in-out infinite;
             transition: box-shadow 0.2s ease, transform 0.2s ease;
@@ -412,7 +414,7 @@
             height: auto;
             display: inline-block;
             vertical-align: middle;
-            filter: grayscale(1) brightness(0.95) opacity(0.95);
+            filter: none;
         }
 
         .impact-factor,
@@ -704,7 +706,7 @@
     <!-- Hero Section -->
     <div class="hero">
         <div class="hero-content">
-            <img src="https://media.licdn.com/dms/image/v2/D5603AQFgE3rw1LX0-w/profile-displayphoto-shrink_800_800/B56ZSKmE.sH0Ag-/0/1737492025577?e=1769040000&v=beta&t=V4krU3KQHbExEoG-UM0zWjGY8NS_e5vxx6f32XYWFPE" alt="Sabir Ali Kalhoro" class="profile-img">
+            <img src="https://media.licdn.com/dms/image/v2/D5603AQFgE3rw1LX0-w/profile-displayphoto-shrink_800_800/B56ZSKmE.sH0Ag-/0/1737492025577?e=1769040000&v=beta&t=V4krU3KQHbExEoG-UM0zWjGY8NS_e5vxx6f32XYWFPE" alt="Sabir Ali Kalhoro" class="profile-img" onerror="this.onerror=null;this.src='https://via.placeholder.com/400?text=Sabir+Ali'">
             <h1>Sabir Ali Kalhoro</h1>
             <div class="subtitle">Ph.D. Candidate in Electrical & Computer Engineering</div>
             <div class="tagline">Specializing in Microgrids, Hybrid Energy Storage & Renewable Energy Integration</div>
@@ -789,7 +791,7 @@
                         <h4 id="proj1-title">Optimal Planning of Hybrid Fuel Cell-Battery System</h4>
                         <p class="project-desc">An optimization framework for grid-connected microgrids that minimizes storage investment and operational cost while supporting low-carbon objectives.</p>
                         <div class="project-meta">
-                            <span class="badge">IEEE Systems Journal <img src="assets/images/ieee.png" alt="IEEE logo" class="publisher-logo" aria-hidden="true"></span>
+                            <span class="badge">IEEE Systems Journal <img src="assets/images/ieee.svg" alt="IEEE logo" class="publisher-logo" aria-hidden="true"></span>
                             <span class="impact-factor">IF: 4.4</span>
                         </div>
                         <p style="margin:0;color:var(--gray);font-size:0.95rem;line-height:1.5;"><strong>Key results:</strong> 8% reduction in storage capacity; 24.45% operational cost savings vs. battery-only systems.</p>
@@ -804,7 +806,7 @@
                         <h4 id="proj2-title">Zero-Emission Microgrid with Hydrogen Integration</h4>
                         <p class="project-desc">Sizing and operational strategies for hybrid battery–fuel cell microgrids including electrolyzers and hydrogen storage to deliver complete zero-emission operation.</p>
                         <div class="project-meta">
-                            <span class="badge">Journal of Energy Storage <img src="assets/images/elsevier.png" alt="Elsevier logo" class="publisher-logo" aria-hidden="true"></span>
+                            <span class="badge">Journal of Energy Storage <img src="assets/images/elsevier.svg" alt="Elsevier logo" class="publisher-logo" aria-hidden="true"></span>
                             <span class="impact-factor">IF: 9.8</span>
                         </div>
                         <p style="margin:0;color:var(--gray);font-size:0.95rem;line-height:1.5;"><strong>Innovation:</strong> Integrated renewables, electrolyzer, H2 storage, fuel cell & battery replacement planning for resilient, zero-emission solutions.</p>
@@ -817,7 +819,7 @@
                 <ul class="achievements-list">
                     <li>✓ 8% reduction in required storage capacity through hybrid system optimization</li>
                     <li>✓ 24.45% decrease in operational costs for grid-connected microgrids</li>
-                    <li>✓ $755,677 annual savings demonstrated in zero-emission configurations</li>
+                    <li>✓ $755,677 annual savings demonstrated using hybrid storage configurations</li>
                     <li>✓ Secured competitive funding through UCCS Seed Grants and Green Action Fund</li>
                 </ul>
             </div>
